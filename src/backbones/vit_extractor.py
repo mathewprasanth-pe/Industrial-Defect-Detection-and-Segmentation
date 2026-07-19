@@ -45,7 +45,7 @@ class ViTPatchExtractor:
 
     def __init__(self, model_name: str = DEFAULT_MODEL_NAME, device: torch.device | None = None):
         self.device = device or get_device()
-        self.model = timm.create_model(model_name, pretrained=True, num_classes=0)
+        self.model = timm.create_model(model_name, pretrained=True, num_classes=0, dynamic_img_size=True)
         self.model.eval()
         self.model.to(self.device)
 
