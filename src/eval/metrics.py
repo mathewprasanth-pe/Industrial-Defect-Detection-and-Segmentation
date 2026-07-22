@@ -21,4 +21,4 @@ def pixel_auroc(heatmaps: np.ndarray, masks: np.ndarray) -> float:
     Flattens everything into one long vector and computes AUROC across
     every pixel/patch of every image at once.
     """
-    return roc_auc_score(masks.flatten().astype(int), heatmaps.flatten())
+    return roc_auc_score((masks.flatten() > 0.5).astype(int), heatmaps.flatten())
